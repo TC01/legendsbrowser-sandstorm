@@ -85,10 +85,7 @@ const pkgdef :Spk.PackageDefinition = (
       #
       # Where `<key-id>` is a PGP key ID or email address associated with the key.
 
-      #description = (defaultText = embed "path/to/description.md"),
-      # The app's description in Github-flavored Markdown format, to be displayed e.g.
-      # in an app store. Note that the Markdown is not permitted to contain HTML nor image tags (but
-      # you can include a list of screenshots separately).
+      description = (defaultText = embed "description.md),
 
       shortDescription = (defaultText = "DF legends viewer"),
 
@@ -100,27 +97,17 @@ const pkgdef :Spk.PackageDefinition = (
         #(width = 746, height = 795, jpeg = embed "path/to/screenshot-1.jpeg"),
         #(width = 640, height = 480, png = embed "path/to/screenshot-2.png"),
       ],
-      #changeLog = (defaultText = embed "path/to/sandstorm-specific/changelog.md"),
-      # Documents the history of changes in Github-flavored markdown format (with the same restrictions
-      # as govern `description`). We recommend formatting this with an H1 heading for each version
-      # followed by a bullet list of changes.
+      changeLog = (defaultText = embed "../CHANGELOG.md""),
     ),
   ),
 
   sourceMap = (
-    # Here we defined where to look for files to copy into your package. The
-    # `spk dev` command actually figures out what files your app needs
-    # automatically by running it on a FUSE filesystem. So, the mappings
-    # here are only to tell it where to find files that the app wants.
     searchPath = [
       ( sourcePath = "." ),  # Search this directory first.
       ( sourcePath = "/",    # Then search the system root directory.
         hidePaths = [ "home", "proc", "sys",
                       "etc/passwd", "etc/hosts", "etc/host.conf",
                       "etc/nsswitch.conf", "etc/resolv.conf" ]
-        # You probably don't want the app pulling files from these places,
-        # so we hide them. Note that /dev, /var, and /tmp are implicitly
-        # hidden because Sandstorm itself provides them.
       )
     ]
   ),
