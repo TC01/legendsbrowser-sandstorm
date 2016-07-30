@@ -121,13 +121,29 @@ def upload_file():
 				time.sleep(5)
 				return redirect(lburl)
 	else:
+	# We really should stick this in a template, but I am lazy.
 		return '''
     <!doctype html>
     <title>Legends Browser Uploader</title>
     <h1>Legends Browser Uploader</h1>
-    Upload Dwarf Fortress legends files. First compress everything you want
-    into a zip archive and then upload it here. The zip must contain, at least,
-    one file ending with "legends.xml" (i.e. the main legends export).
+	This app lets you upload legends data from a <a href="http://www.bay12games.com/dwarves/">Dwarf Fortress</a>
+	world and render it using <a href="https://github.com/robertjanetzko/LegendsBrowser">Legends Browser</a>.
+	You can view the history of your world outside the game and share it with your friends!
+
+	</br></br>
+	To begin, from inside Dwarf Fortress, open Legends mode and export your data: you must at least create
+	an XML dump. The files will be created inside the root of your Dwarf Fortress installation.
+
+	</br></br>
+	Once you have dumped your Legends data, compress all the legends files into a zip archive and upload it
+	using the form below. Note that the zip must include one file ending in "legends.xml"; this is the main
+	XML dump of your world data. Legends Browser will then run.
+	Please note that you may need to refresh the page if it does not auto-refresh to load Legends Browser.
+
+	</br></br>
+
+	To upload additional legends data, you currently must make an entirely new grain.
+
     <form action="" method=post enctype=multipart/form-data>
       <p><input type=file name=file>
          <input type=submit value="Upload">
