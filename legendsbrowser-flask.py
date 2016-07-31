@@ -29,6 +29,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import os
 from flask import Flask, request, redirect, url_for
 from werkzeug.utils import secure_filename
+from werkzeug.contrib.fixers import ProxyFix
 
 import argparse
 import logging
@@ -43,7 +44,7 @@ UPLOAD_FOLDER = os.path.expanduser(os.path.join("~", ".local", "share", "legends
 ALLOWED_EXTENSIONS = set(['zip'])
 
 app = Flask(__name__)
-#app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 # Set globally at startup, this is hackish but works.
 global lburl
@@ -74,6 +75,10 @@ def spawn_legendsbrowser(xmlpath):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+
+#	lburl = request.url + "/legends"
+#	lburl = lburl.replace("http:", "https:")
+
 	# If find_legendsxml returns true, don't bother with the uploader.
 	if request.method == 'GET':
 		xmlpath = find_legendsxml(app.config['UPLOAD_FOLDER'])

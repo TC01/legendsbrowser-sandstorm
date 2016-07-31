@@ -135,6 +135,10 @@ usr/lib/python2.7/site-packages/werkzeug/_compat.py
 usr/lib/python2.7/site-packages/werkzeug/_compat.pyc
 usr/lib/python2.7/site-packages/werkzeug/_internal.py
 usr/lib/python2.7/site-packages/werkzeug/_internal.pyc
+usr/lib/python2.7/site-packages/werkzeug/contrib/__init__.py
+usr/lib/python2.7/site-packages/werkzeug/contrib/__init__.pyc
+usr/lib/python2.7/site-packages/werkzeug/contrib/fixers.py
+usr/lib/python2.7/site-packages/werkzeug/contrib/fixers.pyc
 usr/lib/python2.7/site-packages/werkzeug/datastructures.py
 usr/lib/python2.7/site-packages/werkzeug/datastructures.pyc
 usr/lib/python2.7/site-packages/werkzeug/exceptions.py
@@ -155,6 +159,8 @@ usr/lib/python2.7/site-packages/werkzeug/test.py
 usr/lib/python2.7/site-packages/werkzeug/test.pyc
 usr/lib/python2.7/site-packages/werkzeug/urls.py
 usr/lib/python2.7/site-packages/werkzeug/urls.pyc
+usr/lib/python2.7/site-packages/werkzeug/useragents.py
+usr/lib/python2.7/site-packages/werkzeug/useragents.pyc
 usr/lib/python2.7/site-packages/werkzeug/utils.py
 usr/lib/python2.7/site-packages/werkzeug/utils.pyc
 usr/lib/python2.7/site-packages/werkzeug/wrappers.py
