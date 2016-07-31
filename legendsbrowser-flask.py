@@ -66,7 +66,7 @@ def find_legendsxml(search):
 def spawn_legendsbrowser(xmlpath):
 	# Test if legendsbrowser's socket is taken.
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	result = sock.connect_ex(('127.0.0.1', 58889))
+	result = sock.connect_ex(('127.0.0.1', 58881))
 	if result != 0:
 		subprocess.Popen(["legendsbrowser", "-w", xmlpath, "-s", "-u", "/legends"])
 
