@@ -41,15 +41,15 @@ const pkgdef :Spk.PackageDefinition = (
       # https://github.com/sandstorm-io/sandstorm/blob/master/src/sandstorm/package.capnp
       icons = (
         # Various icons to represent the app in various contexts.
-        #appGrid = (svg = embed "path/to/appgrid-128x128.svg"),
+        appGrid = (png = (dpi1x = embed "../icons/df_appgrid.png")),
         #grain = (svg = embed "path/to/grain-24x24.svg"),
         #market = (svg = embed "path/to/market-150x150.svg"),
         #marketBig = (svg = embed "path/to/market-big-300x300.svg"),
       ),
 
-      website = "http://example.com",
+      website = "https://github.com/TC01/legendsbrowser-sandstorm",
 
-      codeUrl = "http://example.com",
+      codeUrl = "https://github.com/TC01/legendsbrowser-sandstorm",
 
       license = (openSource = mit),
 
@@ -85,7 +85,7 @@ const pkgdef :Spk.PackageDefinition = (
       #
       # Where `<key-id>` is a PGP key ID or email address associated with the key.
 
-      description = (defaultText = embed "description.md),
+      description = (defaultText = embed "description.md"),
 
       shortDescription = (defaultText = "DF legends viewer"),
 
@@ -97,7 +97,7 @@ const pkgdef :Spk.PackageDefinition = (
         #(width = 746, height = 795, jpeg = embed "path/to/screenshot-1.jpeg"),
         #(width = 640, height = 480, png = embed "path/to/screenshot-2.png"),
       ],
-      changeLog = (defaultText = embed "../CHANGELOG.md""),
+      changeLog = (defaultText = embed "../CHANGELOG.md"),
     ),
   ),
 
