@@ -46,6 +46,9 @@ ALLOWED_EXTENSIONS = set(['zip'])
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
+# Interval to wait between launching legends browser and redirecting to it
+wait_interval = 5 # seconds
+
 # Set globally at startup, this is hackish but works.
 global lburl
 lburl = None
@@ -84,7 +87,7 @@ def upload_file():
 		xmlpath = find_legendsxml(app.config['UPLOAD_FOLDER'])
 		if xmlpath is not None:
 			spawn_legendsbrowser(xmlpath)
-			time.sleep(5)
+			time.sleep(wait_interval)
 			return redirect(lburl)
 
 	app.logger.warning("Redirect form of the legendsbrowser URL is: " + str(redirect(lburl)))
@@ -115,7 +118,7 @@ def upload_file():
 			else:
 				# XXX: need to pass port here too.
 				spawn_legendsbrowser(xmlpath)
-				time.sleep(5)
+				time.sleep(wait_interval)
 				return redirect(lburl)
 	else:
 	# We really should stick this in a template, but I am lazy.
