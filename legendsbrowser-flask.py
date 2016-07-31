@@ -80,7 +80,7 @@ def upload_file():
 		if xmlpath is not None:
 			spawn_legendsbrowser(xmlpath)
 			time.sleep(5)
-			return redirect(request.url + lburl.lstrip("/"))
+			return redirect(lburl)
 
 	app.logger.warning("Redirect form of the legendsbrowser URL is: " + str(redirect(lburl)))
 	app.logger.warning("Current request URL was: " + str(request.url))
@@ -111,7 +111,7 @@ def upload_file():
 				# XXX: need to pass port here too.
 				spawn_legendsbrowser(xmlpath)
 				time.sleep(5)
-				return redirect(request.url + lburl.lstrip("/"))
+				return redirect(lburl)
 	else:
 	# We really should stick this in a template, but I am lazy.
 		return '''
