@@ -73,34 +73,23 @@ def spawn_legendsbrowser(xmlpath):
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
 	# If find_legendsxml returns true, don't bother with the uploader.
-	print(app.config['UPLOAD_FOLDER'])
-	print os.path.exists(app.config['UPLOAD_FOLDER'])
-	print request.method
-	
 	if request.method == 'GET':
 		xmlpath = find_legendsxml(app.config['UPLOAD_FOLDER'])
 		if xmlpath is not None:
 			spawn_legendsbrowser(xmlpath)
 			time.sleep(5)
 			return redirect(lburl)
-	
-	print "Got here"
-	
+
 	if request.method == 'POST':
-		print "Executing POST code."
-		print request
-		print request.files
-		print type(request)
+		print request.url
+		print redirect(request.url)
 		# check if the post request has the file part
 		if 'file' not in request.files:
-			print "Eh?"
 			flash('No file part')
 			return redirect(request.url)
 		file = request.files['file']
-		print "Uploading file."
 		# if user does not select file, browser also
 		# submit a empty part without filename
-		print file.filename
 		if file.filename == '':
 			flash('No selected file')
 			return redirect(request.url)
@@ -108,7 +97,7 @@ def upload_file():
 			filename = secure_filename(file.filename)
 			path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			file.save(path)
-			
+
 			# Extract the archive file, returns path to legends.xml
 			# If we find it, spawn legendsbrowser in a subprocess
 			# This assumes legendsbrowser is installed systemwide
@@ -149,16 +138,16 @@ def upload_file():
          <input type=submit value="Upload">
     </form>
     '''
-    
+
 if __name__ == '__main__':
-	
+
 	# Set up argument parser
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-d", "--directory", dest="directory", default=UPLOAD_FOLDER, help="Directory to upload and store legends files.")
 	parser.add_argument("-c", "--clean", dest="clean", action="store_true", help="Clean the upload directory before doing anything.")
 	parser.add_argument("-l", "--lb-url", dest="lburl", default="http://127.0.0.1:58881/legends", help="The URL to redirect to when loading LegendsBrowser.")
 	args = parser.parse_args()
-	
+
 	# If told to clean, try to first delete the directory.
 	# Then make directory if it does not already exist.
 	directory = os.path.abspath(os.path.expanduser(args.directory))
@@ -166,13 +155,12 @@ if __name__ == '__main__':
 		shutil.rmtree(directory)
 	if not os.path.exists(directory):
 		os.makedirs(directory)
-	
+
 	# Set the lburl.
 	# I am not totally sure what this should be.
 	# When running from sandstorm, probably /legendsbrowser or something like that
 	# Otherwise, it needs to know the port to redirect to
 	lburl = args.lburl
-	
+
 	app.config['UPLOAD_FOLDER'] = directory
-	print app.config
 	app.run(host = '0.0.0.0')
