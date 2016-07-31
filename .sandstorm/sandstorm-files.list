@@ -522,6 +522,8 @@ usr/lib64/python2.7/site-packages/flask/helpers.py
 usr/lib64/python2.7/site-packages/flask/helpers.pyc
 usr/lib64/python2.7/site-packages/flask/json.py
 usr/lib64/python2.7/site-packages/flask/json.pyc
+usr/lib64/python2.7/site-packages/flask/logging.py
+usr/lib64/python2.7/site-packages/flask/logging.pyc
 usr/lib64/python2.7/site-packages/flask/sessions.py
 usr/lib64/python2.7/site-packages/flask/sessions.pyc
 usr/lib64/python2.7/site-packages/flask/signals.py

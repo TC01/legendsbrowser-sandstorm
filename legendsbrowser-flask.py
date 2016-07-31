@@ -31,9 +31,11 @@ from flask import Flask, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
 import argparse
+import logging
 import shutil
 import socket
 import subprocess
+import sys
 import time
 import zipfile
 
@@ -78,11 +80,12 @@ def upload_file():
 		if xmlpath is not None:
 			spawn_legendsbrowser(xmlpath)
 			time.sleep(5)
-			return redirect(lburl)
+			return redirect(request.url + lburl.lstrip("/"))
 
+	app.logger.warning("Redirect form of the legendsbrowser URL is: " + str(redirect(lburl)))
+	app.logger.warning("Current request URL was: " + str(request.url))
+	app.logger.warning("Redirect of that URL was: " + str(redirect(request.url)))
 	if request.method == 'POST':
-		print request.url
-		print redirect(request.url)
 		# check if the post request has the file part
 		if 'file' not in request.files:
 			flash('No file part')
@@ -108,7 +111,7 @@ def upload_file():
 				# XXX: need to pass port here too.
 				spawn_legendsbrowser(xmlpath)
 				time.sleep(5)
-				return redirect(lburl)
+				return redirect(request.url + lburl.lstrip("/"))
 	else:
 	# We really should stick this in a template, but I am lazy.
 		return '''
@@ -161,6 +164,11 @@ if __name__ == '__main__':
 	# When running from sandstorm, probably /legendsbrowser or something like that
 	# Otherwise, it needs to know the port to redirect to
 	lburl = args.lburl
+
+	# set logging information
+	logger = logging.StreamHandler(sys.stdout)
+	logger.setLevel(logging.INFO)
+	app.logger.addHandler(logger)
 
 	app.config['UPLOAD_FOLDER'] = directory
 	app.run(host = '0.0.0.0')
