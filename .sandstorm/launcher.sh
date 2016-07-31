@@ -40,6 +40,9 @@ mkdir -p /var/www/html
 mkdir -p /var/lib/legendsbrowser-flask
 mkdir -p /var/tmp
 
+# Remove old httpd pid file.
+rm -f /var/run/httpd.pid
+
 # Point tmpdir at /var/tmp
 export TMPDIR=/var/tmp
 
@@ -47,9 +50,7 @@ export TMPDIR=/var/tmp
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0/
 export LD_LIBRARY_PATH="$JAVA_HOME/jre/lib:$JAVA_HOME/jre/lib/amd64:$JAVA_HOME/jre/lib/amd64/jli:$JAVA_HOME/jre/lib/server"
 
-cd /var/lib/legendsbrowser-flask
 /opt/app/legendsbrowser-flask.py -d /var/lib/legendsbrowser-flask/ &
-#>> /var/log/legendsbrowser-flask.log 2>&1 &
-sleep 2
-/usr/sbin/httpd -f /opt/app/legendsbrowser-apache.conf -DFOREGROUND
+sleep 1
+/usr/sbin/httpd -f /opt/app/legendsbrowser-apache.conf -DFOREGROUND -DNO_DETACH
 

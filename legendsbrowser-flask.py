@@ -78,21 +78,14 @@ def spawn_legendsbrowser(xmlpath):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-
-#	lburl = request.url + "/legends"
-#	lburl = lburl.replace("http:", "https:")
-
 	# If find_legendsxml returns true, don't bother with the uploader.
-	if request.method == 'GET':
-		xmlpath = find_legendsxml(app.config['UPLOAD_FOLDER'])
-		if xmlpath is not None:
-			spawn_legendsbrowser(xmlpath)
-			time.sleep(wait_interval)
-			return redirect(lburl)
+	xmlpath = find_legendsxml(app.config['UPLOAD_FOLDER'])
+	if request.method == 'GET' and xmlpath is not None:
+		spawn_legendsbrowser(xmlpath)
+		time.sleep(wait_interval)
+		return redirect(lburl)
 
-	app.logger.warning("Redirect form of the legendsbrowser URL is: " + str(redirect(lburl)))
-	app.logger.warning("Current request URL was: " + str(request.url))
-	app.logger.warning("Redirect of that URL was: " + str(redirect(request.url)))
+	# Otherwise, make a post.
 	if request.method == 'POST':
 		# check if the post request has the file part
 		if 'file' not in request.files:

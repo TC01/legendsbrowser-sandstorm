@@ -15,6 +15,7 @@ etc/ld.so.cache
 etc/localtime
 etc/mime.types
 lib64
+opt/app
 opt/app/.sandstorm/launcher.sh
 opt/app/legendsbrowser-apache.conf
 opt/app/legendsbrowser-flask.py
@@ -33,6 +34,7 @@ usr/bin/python
 usr/bin/python2
 usr/bin/python2.7
 usr/bin/readlink
+usr/bin/rm
 usr/bin/sed
 usr/bin/sh
 usr/bin/sleep
