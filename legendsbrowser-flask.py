@@ -148,7 +148,7 @@ if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-d", "--directory", dest="directory", default=UPLOAD_FOLDER, help="Directory to upload and store legends files.")
 	parser.add_argument("-c", "--clean", dest="clean", action="store_true", help="Clean the upload directory before doing anything.")
-	parser.add_argument("-l", "--lb-url", dest="lburl", default="http://127.0.0.1:58881/legends", help="The URL to redirect to when loading LegendsBrowser.")
+	parser.add_argument("-l", "--lb-url", dest="lburl", default="/legends", help="The URL to redirect to when loading LegendsBrowser.")
 	args = parser.parse_args()
 
 	# If told to clean, try to first delete the directory.
