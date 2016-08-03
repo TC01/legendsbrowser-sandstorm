@@ -9,5 +9,6 @@ can be very useful. From inside Dwarf Fortress, you can dump a world's legends i
 into an XML format that various tools, like this one, can read.
 
 [Legends Browser](https://github.com/robertjanetzko/LegendsBrowser) is an open-source application written by
-Robert Janetzko. This Sandstorm app allows users to create instances of Legends Browser on
-the Sandstorm platform, upload legends data, render that data, and then host it online.
+Robert Janetzko. This Sandstorm app allows you to create instances of Legends Browser on
+the Sandstorm platform, upload legends data to it, and then host the rendered legends
+of your worlds online for ease of access.

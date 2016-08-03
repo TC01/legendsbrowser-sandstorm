@@ -62,13 +62,10 @@ const pkgdef :Spk.PackageDefinition = (
       shortDescription = (defaultText = "DF legends viewer"),
 
       screenshots = [
-        # Screenshots to use for marketing purposes.  Examples below.
-        # Sizes are given in device-independent pixels, so if you took these
-        # screenshots on a Retina-style high DPI screen, divide each dimension by two.
-
-        #(width = 746, height = 795, jpeg = embed "path/to/screenshot-1.jpeg"),
-        #(width = 640, height = 480, png = embed "path/to/screenshot-2.png"),
+        (width = 1445, height = 987, png = embed "../screenshots/legendsbrowser-sandstorm-main.png"),
+        (width = 1438, height = 715, png = embed "../screenshots/legendsbrowser-sandstorm-mountainhalls.png"),
       ],
+
       changeLog = (defaultText = embed "../CHANGELOG.md"),
     ),
   ),

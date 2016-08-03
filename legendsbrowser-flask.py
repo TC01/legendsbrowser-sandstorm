@@ -121,7 +121,7 @@ def upload_file():
 			# This assumes legendsbrowser is installed systemwide
 			xmlpath = extract_archive(path)
 			if xmlpath is None:
-				return redirect(url_for('uploaded_file',filename=filename))
+				return redirect(request.url)
 			else:
 				# XXX: need to pass port here too.
 				spawn_legendsbrowser(xmlpath)
@@ -145,7 +145,7 @@ def upload_file():
 	</br></br>
 	Once you have dumped your Legends data, compress all the legends files into a zip archive and upload it
 	using the form below. Note that the zip must include one file ending in "legends.xml"; this is the main
-	XML dump of your world data. Legends Browser will then run.
+	XML dump of your world data. After verifying this, Legends Browser will then run.
 	Please note that you may need to refresh the page if it does not auto-refresh to load Legends Browser.
 
 	</br></br>

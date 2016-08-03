@@ -10,7 +10,9 @@ Sandstorm seemed like the obvious choice of platform to use.
 To that end, this repository contains a small Flask web application designed to run in
 front of Legends Browser. Its sole purpose is to allow users to upload Dwarf Fortress
 legends dumps to it, and then run Legends Browser. Reverse proxy configuration for
-Apache httpd is also included to run both applications on the same host.
+Apache httpd is also included to run both applications on the same host. The Flask
+application is currently rather primitive, with a very basic HTML GUI, but it serves
+its purpose.
 
 The Sandstorm information is inside .sandstorm/, and contains the package metadata and
 scripts to start everything up. Sandstorm apps run in containers; this particular one
@@ -23,5 +25,6 @@ The flask app, Apache configuration, and Sandstorm package were written by and a
 maintained by Ben Rosser (me). They are all under the MIT license.
 
 Legends Browser is developed by Robert Janetzko, which is also under the MIT license.
-If you have questions about the Sandstorm application specifically, contact me, not
-him.
+
+If you have issues with this Sandstorm package of Legends Browser, file a bug here
+first before opening an upstream issue.
