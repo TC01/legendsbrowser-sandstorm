@@ -36,7 +36,7 @@ const pkgdef :Spk.PackageDefinition = (
         appGrid = (png = (dpi1x = embed "../icons/df_appgrid.png")),
         #grain = (svg = embed "path/to/grain-24x24.svg"),
         #market = (svg = embed "path/to/market-150x150.svg"),
-        #marketBig = (svg = embed "path/to/market-big-300x300.svg"),
+        marketBig = (png = (dpi1x = embed "../icons/df_market_full.png")),
       ),
 
       website = "https://github.com/TC01/legendsbrowser-sandstorm",
