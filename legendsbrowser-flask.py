@@ -33,6 +33,7 @@ from werkzeug.contrib.fixers import ProxyFix
 
 import argparse
 import logging
+import os
 import shutil
 import socket
 import subprocess
@@ -52,6 +53,19 @@ wait_interval = 5 # seconds
 # Set globally at startup, this is hackish but works.
 global lburl
 lburl = None
+
+def is_authorized(request):
+	"""	Checks if user is authorized to upload files, using Sandstorm headers."""
+	# If we're running with sandstorm, check X-Sandstorm-Permissions.
+	if os.getenv("SANDSTORM") == "1":
+		app.logger.warn(request.headers['X-Sandstorm-Permissions'])
+		if 'editor' in request.headers['X-Sandstorm-Permissions']:
+			return True
+		return False
+
+	# If not running with Sandstorm, assume true.
+	else:
+		return True
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -114,8 +128,9 @@ def upload_file():
 				time.sleep(wait_interval)
 				return redirect(lburl)
 	else:
-	# We really should stick this in a template, but I am lazy.
-		return '''
+		# We really should stick this in a template, but I am lazy.
+		if is_authorized(request):
+			return '''
     <!doctype html>
     <title>Legends Browser Uploader</title>
     <h1>Legends Browser Uploader</h1>
@@ -142,6 +157,14 @@ def upload_file():
          <input type=submit value="Upload">
     </form>
     '''
+		else:
+			return '''
+	<!doctype html>
+	<title>Legends Browser</title>
+	<h1>Legends Browser</h1>
+	No legends files have been uploaded yet, and you do not have permission to do so. Sorry!
+	You should contact the owner of this grain (probably whoever sent you this link) for help.
+	'''
 
 if __name__ == '__main__':
 

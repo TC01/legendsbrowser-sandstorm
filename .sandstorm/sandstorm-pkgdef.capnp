@@ -14,9 +14,6 @@ const pkgdef :Spk.PackageDefinition = (
   # your keyring. All updates must be signed with the same key.
 
   manifest = (
-    # This manifest is included in your app package to tell Sandstorm
-    # about your app.
-
     appTitle = (defaultText = "Legends Browser"),
 
     appVersion = 1,  # Increment this for every release.
@@ -34,11 +31,6 @@ const pkgdef :Spk.PackageDefinition = (
     continueCommand = .myCommand,
 
     metadata = (
-      # Data which is not needed specifically to execute the app, but is useful
-      # for purposes like marketing and display.  These fields are documented at
-      # https://docs.sandstorm.io/en/latest/developing/publishing-apps/#add-required-metadata
-      # and (in deeper detail) in the sandstorm source code, in the Metadata section of
-      # https://github.com/sandstorm-io/sandstorm/blob/master/src/sandstorm/package.capnp
       icons = (
         # Various icons to represent the app in various contexts.
         appGrid = (png = (dpi1x = embed "../icons/df_appgrid.png")),
@@ -113,15 +105,8 @@ const pkgdef :Spk.PackageDefinition = (
   ),
 
   fileList = "sandstorm-files.list",
-  # `spk dev` will write a list of all the files your app uses to this file.
-  # You should review it later, before shipping your app.
 
   alwaysInclude = [],
-  # Fill this list with more names of files or directories that should be
-  # included in your package, even if not listed in sandstorm-files.list.
-  # Use this to force-include stuff that you know you need but which may
-  # not have been detected as a dependency during `spk dev`. If you list
-  # a directory here, its entire contents will be included recursively.
 
   bridgeConfig = (
     # Used for integrating permissions and roles into the Sandstorm shell
@@ -150,38 +135,29 @@ const pkgdef :Spk.PackageDefinition = (
           # Name of the permission, used as an identifier for the permission in cases where string
           # names are preferred.  Used in sandstorm-http-bridge's X-Sandstorm-Permissions HTTP header.
   
-          title = (defaultText = "editor"),
+          title = (defaultText = "uploader"),
           # Display name of the permission, e.g. to display in a checklist of permissions
           # that may be assigned when sharing.
   
-          description = (defaultText = "grants ability to modify data"),
+          description = (defaultText = "grants ability to upload legends data"),
           # Prose describing what this role means, suitable for a tool tip or similar help text.
         ),
       ],
       roles = [
-        # Roles are logical collections of permissions.  For instance, your app may have
-        # a "viewer" role and an "editor" role
         (
-          title = (defaultText = "editor"),
-          # Name of the role.  Shown in the Sandstorm UI to indicate which users have which roles.
+          title = (defaultText = "uploader"),
   
           permissions  = [true],
-          # An array indicating which permissions this role carries.
-          # It should be the same length as the permissions array in
-          # viewInfo, and the order of the lists must match.
   
-          verbPhrase = (defaultText = "can make changes to the document"),
-          # Brief explanatory text to show in the sharing UI indicating
-          # what a user assigned this role will be able to do with the grain.
+          verbPhrase = (defaultText = "can upload new legends files"),
   
-          description = (defaultText = "editors may view all site data and change settings."),
-          # Prose describing what this role means, suitable for a tool tip or similar help text.
+          description = (defaultText = "uploaders may upload new legends files."),
         ),
         (
           title = (defaultText = "viewer"),
           permissions  = [false],
-          verbPhrase = (defaultText = "can view the document"),
-          description = (defaultText = "viewers may view what other users have written."),
+          verbPhrase = (defaultText = "can view the world's legends"),
+          description = (defaultText = "viewers may read the world's legends."),
         ),
       ],
     ),
