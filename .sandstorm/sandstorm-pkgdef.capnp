@@ -126,14 +126,14 @@ const pkgdef :Spk.PackageDefinition = (
   
           permissions  = [true],
   
-          verbPhrase = (defaultText = "can upload new legends files"),
+          verbPhrase = (defaultText = "can upload"),
   
           description = (defaultText = "uploaders may upload new legends files."),
         ),
         (
           title = (defaultText = "viewer"),
           permissions  = [false],
-          verbPhrase = (defaultText = "can view the world's legends"),
+          verbPhrase = (defaultText = "can view"),
           description = (defaultText = "viewers may read the world's legends."),
         ),
       ],
