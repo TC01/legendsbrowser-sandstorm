@@ -149,6 +149,11 @@ def upload_file():
 	Please note that you may need to refresh the page if it does not auto-refresh to load Legends Browser.
 
 	</br></br>
+	Legends Browser is, unfortunately, fairly RAM hungry. It may require up to 2x the size of your
+	legends files in memory in order to run. If the render should fail, this is likely the reason why,
+	and something you can confirm by checking your debug log.
+
+	</br></br>
 
 	To upload additional legends data, you currently must make an entirely new grain.
 

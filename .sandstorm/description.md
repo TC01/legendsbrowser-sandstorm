@@ -12,3 +12,6 @@ into an XML format that various tools, like this one, can read.
 Robert Janetzko. This Sandstorm app allows you to create instances of Legends Browser on
 the Sandstorm platform, upload legends data to it, and then host the rendered legends
 of your worlds online for ease of access.
+
+Please note: you may need a lot of RAM for Legends Browser to work, especially for large
+worlds with long histories.
