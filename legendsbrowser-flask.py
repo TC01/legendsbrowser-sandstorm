@@ -134,8 +134,8 @@ def upload_file():
     <!doctype html>
     <title>Legends Browser Uploader</title>
     <h1>Legends Browser Uploader</h1>
-	This app lets you upload legends data from a <a href="http://www.bay12games.com/dwarves/">Dwarf Fortress</a>
-	world and render it using <a href="https://github.com/robertjanetzko/LegendsBrowser">Legends Browser</a>.
+	This app lets you upload legends data from a <a target="_blank" href="http://www.bay12games.com/dwarves/">Dwarf Fortress</a>
+	world and render it using <a target="_blank" href="https://github.com/robertjanetzko/LegendsBrowser">Legends Browser</a>.
 	You can view the history of your world outside the game and share it with your friends!
 
 	</br></br>
