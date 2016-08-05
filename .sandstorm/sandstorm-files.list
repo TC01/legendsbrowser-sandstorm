@@ -5,6 +5,7 @@
 bin
 etc/alternatives/java_sdk_1.8.0
 etc/alternatives/java_sdk_1.8.0_exports
+etc/crypto-policies/back-ends/openssl.config
 etc/httpd/conf.modules.d/00-mpm.conf
 etc/httpd/conf.modules.d/00-proxy.conf
 etc/httpd/conf.modules.d/00-proxyhtml.conf
@@ -14,6 +15,8 @@ etc/java/java.conf
 etc/ld.so.cache
 etc/localtime
 etc/mime.types
+etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+etc/pki/tls/cert.pem
 lib64
 opt/app
 opt/app/.sandstorm/launcher.sh
@@ -30,6 +33,8 @@ usr/bin/env
 usr/bin/find
 usr/bin/legendsbrowser
 usr/bin/mkdir
+usr/bin/nc
+usr/bin/ncat
 usr/bin/python
 usr/bin/python2
 usr/bin/python2.7
@@ -37,7 +42,6 @@ usr/bin/readlink
 usr/bin/rm
 usr/bin/sed
 usr/bin/sh
-usr/bin/sleep
 usr/lib/jvm-exports/java-1.8.0
 usr/lib/jvm/java-1.8.0
 usr/lib/jvm/java-1.8.0-openjdk-1.8.0.101-1.b14.fc24.x86_64/bin/java
@@ -311,6 +315,8 @@ usr/lib64/libnss_files-2.23.so
 usr/lib64/libnss_files.so.2
 usr/lib64/libnss_nis-2.23.so
 usr/lib64/libnss_nis.so.2
+usr/lib64/libpcap.so.1
+usr/lib64/libpcap.so.1.7.4
 usr/lib64/libpcre.so.1
 usr/lib64/libpcre.so.1.2.6
 usr/lib64/libpthread-2.23.so

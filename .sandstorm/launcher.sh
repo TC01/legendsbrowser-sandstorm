@@ -52,7 +52,7 @@ export LD_LIBRARY_PATH="$JAVA_HOME/jre/lib:$JAVA_HOME/jre/lib/amd64:$JAVA_HOME/j
 
 # Launch Legends Browser, wait for it to connect.
 /opt/app/legendsbrowser-flask.py -d /var/lib/legendsbrowser-flask/ &
-while ! nc -w 1 -z 127.0.0.1 5000 ; do
+while ! nc -vn -w 1 127.0.0.1 5000 ; do
 	echo "Waiting for Flask app to start..."
 done
 

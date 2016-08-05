@@ -35,6 +35,7 @@ pip install flask
 dnf install -y httpd
 dnf install -y mod_proxy_html
 dnf install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk-headless
+dnf install -y nmap-ncat
 
 # Also deploy the configuration file for httpd here
 cp /opt/app/legendsbrowser-apache.conf /etc/httpd/conf.d/
