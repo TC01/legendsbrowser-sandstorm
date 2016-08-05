@@ -50,7 +50,12 @@ export TMPDIR=/var/tmp
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0/
 export LD_LIBRARY_PATH="$JAVA_HOME/jre/lib:$JAVA_HOME/jre/lib/amd64:$JAVA_HOME/jre/lib/amd64/jli:$JAVA_HOME/jre/lib/server"
 
+# Launch Legends Browser, wait for it to connect.
 /opt/app/legendsbrowser-flask.py -d /var/lib/legendsbrowser-flask/ &
-sleep 1
+while ! nc -w 1 -z 127.0.0.1 5000 ; do
+	echo "Waiting for Flask app to start..."
+done
+
+# Launch httpd.
 /usr/sbin/httpd -f /opt/app/legendsbrowser-apache.conf -DFOREGROUND -DNO_DETACH
 
