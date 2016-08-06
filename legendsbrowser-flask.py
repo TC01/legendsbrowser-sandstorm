@@ -95,8 +95,13 @@ def upload_file():
 	# If find_legendsxml returns true, don't bother with the uploader.
 	xmlpath = find_legendsxml(app.config['UPLOAD_FOLDER'])
 	if request.method == 'GET' and xmlpath is not None:
+		# Logic for spawning legends browser: call routine to actually do it
+		# Then keep trying to connect to the port, then redirect when that succeeds.
 		spawn_legendsbrowser(xmlpath)
-		time.sleep(wait_interval)
+		result = -1
+		while result != 0:
+			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			result = sock.connect_ex(('127.0.0.1', 58881))
 		return redirect(lburl)
 
 	# Otherwise, make a post.
@@ -122,11 +127,16 @@ def upload_file():
 			xmlpath = extract_archive(path)
 			if xmlpath is None:
 				return redirect(request.url)
-			else:
-				# XXX: need to pass port here too.
-				spawn_legendsbrowser(xmlpath)
-				time.sleep(wait_interval)
-				return redirect(lburl)
+
+			# Logic for spawning legends browser: call routine to actually do it
+			# Then keep trying to connect to the port, then redirect when that succeeds.
+			spawn_legendsbrowser(xmlpath)
+			result = -1
+			while result != 0:
+				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+				result = sock.connect_ex(('127.0.0.1', 58881))
+			return redirect(lburl)
+
 	else:
 		# We really should stick this in a template, but I am lazy.
 		if is_authorized(request):
