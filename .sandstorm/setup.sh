@@ -25,10 +25,10 @@ set -euo pipefail
 
 
 # This is Fedora. Install our dwarffortress repository.
-dnf install -y wget
-wget -P /etc/yum.repos.d/ https://www.acm.jhu.edu/~bjr/fedora/dwarffortress/dwarffortress.repo
-rpm --import https://www.acm.jhu.edu/~bjr/fedora/dwarffortress/df_gpg_key
-dnf install -y legendsbrowser
+#dnf install -y wget
+#wget -P /etc/yum.repos.d/ https://www.acm.jhu.edu/~bjr/fedora/dwarffortress/dwarffortress.repo
+#rpm --import https://www.acm.jhu.edu/~bjr/fedora/dwarffortress/df_gpg_key
+dnf install -y --enablerepo=updates-testing legendsbrowser
 dnf install -y python-pip
 pip install flask
 #dnf install -y python-flask
@@ -36,6 +36,7 @@ dnf install -y httpd
 dnf install -y mod_proxy_html
 dnf install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk-headless
 dnf install -y nmap-ncat
+dnf install -y gnupg
 
 # Also deploy the configuration file for httpd here
 cp /opt/app/legendsbrowser-apache.conf /etc/httpd/conf.d/
