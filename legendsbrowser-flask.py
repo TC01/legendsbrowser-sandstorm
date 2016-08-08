@@ -74,6 +74,8 @@ def extract_archive(path):
 	if path.rsplit('.', 1)[1] == 'zip':
 		archive = zipfile.ZipFile(path, 'r')
 		archive.extractall(app.config['UPLOAD_FOLDER'])
+		archive.close()
+	os.remove(path)
 	return find_legendsxml(app.config['UPLOAD_FOLDER'])
 
 def find_legendsxml(search):
@@ -87,8 +89,9 @@ def spawn_legendsbrowser(xmlpath):
 	# Test if legendsbrowser's socket is taken.
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	result = sock.connect_ex(('127.0.0.1', 58881))
+	dir = xmlpath.rpartition("/")[0]
 	if result != 0:
-		subprocess.Popen(["legendsbrowser", "-w", xmlpath, "-s", "-u", "/legends"])
+		subprocess.Popen(["legendsbrowser", "-w", xmlpath, "-s", "-u", "/legends"], cwd=dir)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
