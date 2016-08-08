@@ -25,20 +25,36 @@ set -euo pipefail
 
 
 # This is Fedora. Install our dwarffortress repository.
+# Actually just install legendsbrowser from repos
 #dnf install -y wget
 #wget -P /etc/yum.repos.d/ https://www.acm.jhu.edu/~bjr/fedora/dwarffortress/dwarffortress.repo
 #rpm --import https://www.acm.jhu.edu/~bjr/fedora/dwarffortress/df_gpg_key
 dnf install -y --enablerepo=updates-testing legendsbrowser
+
+# The version of flask in F24 is just a bit too old
 dnf install -y python-pip
 pip install flask
 #dnf install -y python-flask
+
+# Install httpd
 dnf install -y httpd
 dnf install -y mod_proxy_html
+
+# Install Java.
 dnf install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk-headless
+
+# Install some useful utilities
 dnf install -y nmap-ncat
 dnf install -y gnupg
 
+# Tragically, we need to install maven in order to pull reflections-0.9.9.
+# For exciting reasons, it seems we need reflections 0.9.9 to fix
+# this bug: https://github.com/ronmamo/reflections/issues/81
+dnf install -y maven
+mvn dependency:get -Dartifact=org.reflections:reflections:0.9.9
+cp -v ~/.m2/repository/org/reflections/reflections/0.9.9/reflections-0.9.9.jar /usr/share/java/reflections.jar
+
 # Also deploy the configuration file for httpd here
-cp /opt/app/legendsbrowser-apache.conf /etc/httpd/conf.d/
+cp -v /opt/app/legendsbrowser-apache.conf /etc/httpd/conf.d/
 
 exit 0
