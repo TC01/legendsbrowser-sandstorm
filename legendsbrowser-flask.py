@@ -91,7 +91,7 @@ def spawn_legendsbrowser(xmlpath):
 	result = sock.connect_ex(('127.0.0.1', 58881))
 	dir = xmlpath.rpartition("/")[0]
 	if result != 0:
-		subprocess.Popen(["legendsbrowser", "-w", xmlpath, "-s", "-u", "/legends"], cwd=dir)
+		subprocess.Popen(["/opt/app/run-legendsbrowser.py", "-w", xmlpath, "-s", "-u", "/legends"], cwd=dir)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():

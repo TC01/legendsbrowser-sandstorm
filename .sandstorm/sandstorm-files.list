@@ -22,6 +22,7 @@ opt/app
 opt/app/.sandstorm/launcher.sh
 opt/app/legendsbrowser-apache.conf
 opt/app/legendsbrowser-flask.py
+opt/app/run-legendsbrowser.py
 proc/cpuinfo
 sandstorm-http-bridge
 sandstorm-http-bridge-config
