@@ -58,6 +58,7 @@ cp -v ~/.m2/repository/org/reflections/reflections/0.9.9/reflections-0.9.9.jar /
 cp -v /opt/app/legendsbrowser-apache.conf /etc/httpd/conf.d/
 
 # Modify legendsbrowser to run with max 1 GB of RAM.
-sed 's/BASE_FLAGS=""/BASE_FLAGS="-Xmx1024M"/' -i /usr/bin/legendsbrowser
+# Also modify it to set user.home property
+sed 's/BASE_FLAGS=""/BASE_FLAGS="-Xmx1024M -Duser.home=\/var"/' -i /usr/bin/legendsbrowser
 
 exit 0
