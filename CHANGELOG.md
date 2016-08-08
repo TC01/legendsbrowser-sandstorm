@@ -4,6 +4,7 @@
 * Fix to process spawning by blocking until services (Java, Flask) come up on
 their designated ports, as opposed to waiting a fixed amount of time.
 * Revert to reflections 0.9.9 in order to fix a nasty multithreading bug.
+* Restart Legends Browser whenever Java dies; this should improve reliability.
 
 # 0.1.0
 
