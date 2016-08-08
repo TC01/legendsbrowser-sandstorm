@@ -14,7 +14,10 @@ hostname localhost
 #mkdir -p /host-dot-sandstorm/caches/
 #wget -O /host-dot-sandstorm/caches/install.sh https://install.sandstorm.io/
 #chmod +x /host-dot-sandstorm/caches-install.sh
-curl $CURL_OPTS https://install.sandstorm.io/ 2>&1 > /host-dot-sandstorm/caches/install.sh | cat
+
+# This is broken, because exciting reasons. use the 173 install script.
+#curl $CURL_OPTS https://install.sandstorm.io/ 2>&1 > /host-dot-sandstorm/caches/install.sh | cat
+curl $CURL_OPTS https://raw.githubusercontent.com/sandstorm-io/sandstorm/fcd75e5286e61342f952ee41a3f278619e3a2db3/install.sh 2>&1 > /host-dot-sandstorm/caches/install.sh | cat
 
 SANDSTORM_CURRENT_VERSION=$(curl $CURL_OPTS -f "https://install.sandstorm.io/dev?from=0&type=install")
 SANDSTORM_PACKAGE="sandstorm-$SANDSTORM_CURRENT_VERSION.tar.xz"

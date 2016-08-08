@@ -419,6 +419,8 @@ usr/lib64/python2.7/encodings/idna.py
 usr/lib64/python2.7/encodings/idna.pyc
 usr/lib64/python2.7/encodings/latin_1.py
 usr/lib64/python2.7/encodings/latin_1.pyc
+usr/lib64/python2.7/encodings/string_escape.py
+usr/lib64/python2.7/encodings/string_escape.pyc
 usr/lib64/python2.7/encodings/utf_8.py
 usr/lib64/python2.7/encodings/utf_8.pyc
 usr/lib64/python2.7/fnmatch.py
@@ -606,6 +608,8 @@ usr/share/java/apache-commons-collections.jar
 usr/share/java/apache-commons-lang.jar
 usr/share/java/apache-commons-logging.jar
 usr/share/java/commons-cli.jar
+usr/share/java/commons-collections.jar
+usr/share/java/commons-lang.jar
 usr/share/java/commons-logging.jar
 usr/share/java/dom4j.jar
 usr/share/java/dom4j/dom4j.jar
