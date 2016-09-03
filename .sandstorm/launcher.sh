@@ -43,6 +43,9 @@ mkdir -p /var/tmp
 # Remove old httpd pid file.
 rm -f /var/run/httpd.pid
 
+# Remove old run-legendsbrowser lock file.
+rm -f /var/tmp/run-legendsbrowser-lock
+
 # Point tmpdir at /var/tmp
 export TMPDIR=/var/tmp
 

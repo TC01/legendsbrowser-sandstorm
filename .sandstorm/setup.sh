@@ -36,6 +36,10 @@ dnf install -y python-pip
 pip install flask
 #dnf install -y python-flask
 
+# We want a python lock file implementation
+# This doesn't seem to be built into the stdlib!
+dnf install -y python-fasteners python-monotonic
+
 # Install httpd
 dnf install -y httpd
 dnf install -y mod_proxy_html
