@@ -1,3 +1,8 @@
+# 0.1.2
+
+* Fix bug where 2+ versions of legendsbrowser can be started due to multiple
+launcher processes being spawned.
+
 # 0.1.1
 
 * Fix external links to use target="_blank" so they function in Sandstorm.
