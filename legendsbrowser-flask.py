@@ -139,6 +139,10 @@ def upload_file():
 				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				result = sock.connect_ex(('127.0.0.1', 58881))
 			return redirect(lburl)
+		# Upload fails for whatever reason.
+		else:
+			flash('Invalid file type uploaded, you must attach a zip.')
+			return redirect(request.url)
 
 	else:
 		# We really should stick this in a template, but I am lazy.
