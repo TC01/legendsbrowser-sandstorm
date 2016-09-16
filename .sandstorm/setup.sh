@@ -40,6 +40,9 @@ pip install flask
 # This doesn't seem to be built into the stdlib!
 dnf install -y python-fasteners python-monotonic
 
+# We want python2-libarchive-c too~
+dnf install -y python2-libarchive-c
+
 # Install httpd
 dnf install -y httpd
 dnf install -y mod_proxy_html

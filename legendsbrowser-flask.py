@@ -27,9 +27,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 import os
-from flask import Flask, request, redirect, url_for, flash
-from werkzeug.utils import secure_filename
-from werkzeug.contrib.fixers import ProxyFix
 
 import argparse
 import logging
@@ -41,6 +38,12 @@ import sys
 import time
 import zipfile
 
+from flask import Flask, request, redirect, url_for, flash
+from werkzeug.utils import secure_filename
+from werkzeug.contrib.fixers import ProxyFix
+
+import libarchive
+
 UPLOAD_FOLDER = os.path.expanduser(os.path.join("~", ".local", "share", "legendsbrowser-flask"))
 ALLOWED_EXTENSIONS = set(['zip'])
 
@@ -48,7 +51,7 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
 # Interval to wait between launching legends browser and redirecting to it
-wait_interval = 5 # seconds
+wait_interval = 1 # seconds
 
 # Set globally at startup, this is hackish but works.
 global lburl
@@ -68,14 +71,16 @@ def is_authorized(request):
 		return True
 
 def allowed_file(filename):
-	return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+# 	Allow all filenames, for now.
+#	return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+	return True
 
 def extract_archive(path):
-	if path.rsplit('.', 1)[1] == 'zip':
-		archive = zipfile.ZipFile(path, 'r')
-		archive.extractall(app.config['UPLOAD_FOLDER'])
-		archive.close()
-	os.remove(path)
+	# Use libarchive to do extraction.
+	curdir = os.getcwd()
+	os.chdir(app.config['UPLOAD_FOLDER'])
+	libarchive.extract_file(path)
+	os.chdir(curdir)
 	return find_legendsxml(app.config['UPLOAD_FOLDER'])
 
 def find_legendsxml(search):
@@ -103,7 +108,7 @@ def upload_file():
 		spawn_legendsbrowser(xmlpath)
 		result = -1
 		while result != 0:
-			time.sleep(1)
+			time.sleep(wait_interval)
 			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			result = sock.connect_ex(('127.0.0.1', 58881))
 		return redirect(lburl)
@@ -135,7 +140,7 @@ def upload_file():
 			spawn_legendsbrowser(xmlpath)
 			result = -1
 			while result != 0:
-				time.sleep(1)
+				time.sleep(wait_interval)
 				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				result = sock.connect_ex(('127.0.0.1', 58881))
 			return redirect(lburl)

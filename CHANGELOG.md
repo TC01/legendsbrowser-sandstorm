@@ -1,3 +1,9 @@
+# 0.1.3
+
+* Use python-libarchive-c to support more archive types than just zip.
+* Fix bug where Flask app crashes if file upload fails.
+* Add a small hardcoded time delay between starting Java and querying port.
+
 # 0.1.2
 
 * Fix bug where 2+ versions of legendsbrowser can be started due to multiple
