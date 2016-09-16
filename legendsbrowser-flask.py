@@ -103,6 +103,7 @@ def upload_file():
 		spawn_legendsbrowser(xmlpath)
 		result = -1
 		while result != 0:
+			time.sleep(1)
 			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			result = sock.connect_ex(('127.0.0.1', 58881))
 		return redirect(lburl)
@@ -134,6 +135,7 @@ def upload_file():
 			spawn_legendsbrowser(xmlpath)
 			result = -1
 			while result != 0:
+				time.sleep(1)
 				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				result = sock.connect_ex(('127.0.0.1', 58881))
 			return redirect(lburl)
