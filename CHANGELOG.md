@@ -1,3 +1,8 @@
+# 0.1.4
+
+* Change base image to Fedora 25 Vagrant base.
+* Update to Legends Browser 1.12.2, with several bugfixes.
+
 # 0.1.3
 
 * Use python-libarchive-c to support more archive types than just zip.
