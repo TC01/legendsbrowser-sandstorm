@@ -11,7 +11,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Base on the Sandstorm snapshots of the official Debian 8 (jessie) box.
-  config.vm.box = "fedora/24-cloud-base"
+  config.vm.box = "fedora/25-cloud-base"
 
   if Vagrant.has_plugin?("vagrant-vbguest") then
     # vagrant-vbguest is a Vagrant plugin that upgrades

@@ -32,9 +32,9 @@ set -euo pipefail
 dnf install -y --enablerepo=updates-testing legendsbrowser
 
 # The version of flask in F24 is just a bit too old
-dnf install -y python-pip
-pip install flask
-#dnf install -y python-flask
+#dnf install -y python-pip
+#pip install flask
+dnf install -y python-flask
 
 # We want a python lock file implementation
 # This doesn't seem to be built into the stdlib!
@@ -57,6 +57,7 @@ dnf install -y gnupg
 # Tragically, we need to install maven in order to pull reflections-0.9.9.
 # For exciting reasons, it seems we need reflections 0.9.9 to fix
 # this bug: https://github.com/ronmamo/reflections/issues/81
+# As of about a year later, this bug stll exists. :(
 dnf install -y maven
 mvn dependency:get -Dartifact=org.reflections:reflections:0.9.9
 cp -v ~/.m2/repository/org/reflections/reflections/0.9.9/reflections-0.9.9.jar /usr/share/java/reflections.jar
