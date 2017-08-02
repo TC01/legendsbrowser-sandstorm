@@ -10,8 +10,9 @@ VM_NAME = File.basename(File.dirname(File.dirname(__FILE__))) + "_sandstorm_#{Ti
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # Base on the Sandstorm snapshots of the official Debian 8 (jessie) box.
-  config.vm.box = "fedora/25-cloud-base"
+  # Use the Fedora 26 vagrant box.
+  config.vm.box = "fedora/26-cloud-base"
+  config.vm.box_version = "20170705"
 
   if Vagrant.has_plugin?("vagrant-vbguest") then
     # vagrant-vbguest is a Vagrant plugin that upgrades
