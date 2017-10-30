@@ -1,3 +1,8 @@
+# 0.1.5
+
+* Change base image to Fedora 26 Vagrant base.
+* Update to Legends Browser 1.13, with several bugfixes.
+
 # 0.1.4
 
 * Change base image to Fedora 25 Vagrant base.

@@ -26,14 +26,9 @@ set -euo pipefail
 
 # This is Fedora. Install our dwarffortress repository.
 # Actually just install legendsbrowser from repos
-#dnf install -y wget
-#wget -P /etc/yum.repos.d/ https://www.acm.jhu.edu/~bjr/fedora/dwarffortress/dwarffortress.repo
-#rpm --import https://www.acm.jhu.edu/~bjr/fedora/dwarffortress/df_gpg_key
 dnf install -y --enablerepo=updates-testing legendsbrowser
 
-# The version of flask in F24 is just a bit too old
-#dnf install -y python-pip
-#pip install flask
+# Get flask, to run the minimal wrapper on top of legendsbrowser.
 dnf install -y python-flask
 
 # We want a python lock file implementation
